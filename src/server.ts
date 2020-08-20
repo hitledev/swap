@@ -5,10 +5,10 @@ import * as https from 'https';
 import webpackDevMiddleware = require("webpack-dev-middleware");
 import webpack = require('webpack');
 
-const {PORT, NODE_ENV} = process.env;
+const {PORT, NODE_ENV, HTTPS}: any = process.env;
 
 const port = PORT || 5555;
-const isHttps = NODE_ENV.startsWith("prod");
+const isHttps = !!HTTPS;
 
 class WebServer {
   _httpServer?: http.Server;

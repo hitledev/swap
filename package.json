@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "NODE_ENV=development nodemon --watch src/server ./src/server",
     "build": "HTTPS=true NODE_ENV=production webpack -p --config ./webpack/webpack.production.config.js",
-    "start": "NODE_ENV=production && ts-node ./src/server.ts",
-    "start:https": "HTTPS=1 NODE_ENV=production && ts-node ./src/server.ts",
+    "start": "NODE_ENV=production ts-node ./src/server.ts",
+    "start:https": "HTTPS=true NODE_ENV=production ts-node ./src/server.ts",
     "serve": "NODE_ENV=production && serve -p 5555 -n -s dist"
   },
   "dependencies": {
