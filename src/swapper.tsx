@@ -228,13 +228,15 @@ export default class Swapper extends React.Component<any, IState> {
         "excludeDEXS": 'PARASWAPPOOL,AAVE,CHAI,MakerDAO,BZX,COMPOUND',
         "includeDEXS": 'KYBER,UNISWAP,BANCOR,Oasis,ZEROX'
       };
-      // @ts-ignore
-      const priceRouteOrError = await this.paraSwap!.getRate(tokenFrom!.address, tokenTo!.address, _srcAmount.toFixed(0), options);
+
+      const priceRouteOrError = await this.paraSwap!.getRate(tokenFrom!.address, tokenTo!.address, _srcAmount.toFixed(0));
       //console.log(priceRouteOrError);
 
       let excludeExchange = ['PARASWAPPOOL', 'AAVE', 'CHAI', 'MAKERDAO', 'BZX', 'COMPOUND'];
       let bestRoute_2 = [];
+      // @ts-ignore
       for (let i = 0; i < priceRouteOrError.bestRoute.length; i++) {
+        // @ts-ignore
         let checkExchange = priceRouteOrError.bestRoute[i];
         let exchange = checkExchange.exchange.toUpperCase();
         var checkExcludeExchange = excludeExchange.includes(exchange, 0);
@@ -244,6 +246,7 @@ export default class Swapper extends React.Component<any, IState> {
           bestRoute_2.push(checkExchange);
         }
       }
+      // @ts-ignore
       priceRouteOrError.bestRoute = bestRoute_2;
       //console.log(priceRouteOrError);
 
