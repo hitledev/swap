@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import BigNumber from "bignumber.js";
-import {Button, Dropdown, Form, Icon, Input, Message, Image, Segment, Text} from "semantic-ui-react";
+import {Button, Dropdown, Form, Input, Message} from "semantic-ui-react";
 import {ParaSwap, APIError, Token, User, OptimalRates, Transaction} from "paraswap";
 import Web3 = require("web3");
-import logo = require("logo.png");
 
 const pkg = require('../package');
 
@@ -173,7 +172,7 @@ export default class Swapper extends React.Component<any, IState> {
       this.setState({loading: true});
 
       const tokensOrError = await this.paraSwap!.getTokens();
-      
+
 
       if ((tokensOrError as APIError).message) {
         return this.setState({error: (tokensOrError as APIError).message, loading: false});
@@ -181,19 +180,19 @@ export default class Swapper extends React.Component<any, IState> {
 
       let tokens: Token[] = tokensOrError as Token[];
       //console.log(tokens);
-      
-      let excludeToken = ['c','a','s','i','p','b'];
+
+      let excludeToken = ['c', 'a', 's', 'i', 'p', 'b'];
       let tokens2 = [];
-      for(let i=0; i < tokens.length; i++){
-          let token = tokens[i];
-          let symbol = token.symbol;
-          let checkChar = symbol.split('');
-          var checkExcludeToken = excludeToken.includes(checkChar[0], 0);
-          if(checkExcludeToken){
-              //data.tokens.splice(i, 1);
-          }else{
-            tokens2.push(token);
-          }
+      for (let i = 0; i < tokens.length; i++) {
+        let token = tokens[i];
+        let symbol = token.symbol;
+        let checkChar = symbol.split('');
+        var checkExcludeToken = excludeToken.includes(checkChar[0], 0);
+        if (checkExcludeToken) {
+          //data.tokens.splice(i, 1);
+        } else {
+          tokens2.push(token);
+        }
       }
       console.log(tokens2);
       tokens = tokens2;
@@ -226,21 +225,22 @@ export default class Swapper extends React.Component<any, IState> {
       this.setState({loading: true});
 
       let options = {
-        "excludeDEXS":'PARASWAPPOOL,AAVE,CHAI,MakerDAO,BZX,COMPOUND',
-        "includeDEXS":'KYBER,UNISWAP,BANCOR,Oasis,ZEROX'
+        "excludeDEXS": 'PARASWAPPOOL,AAVE,CHAI,MakerDAO,BZX,COMPOUND',
+        "includeDEXS": 'KYBER,UNISWAP,BANCOR,Oasis,ZEROX'
       };
+      // @ts-ignore
       const priceRouteOrError = await this.paraSwap!.getRate(tokenFrom!.address, tokenTo!.address, _srcAmount.toFixed(0), options);
       //console.log(priceRouteOrError);
 
-      let excludeExchange = ['PARASWAPPOOL','AAVE','CHAI','MAKERDAO','BZX','COMPOUND'];
+      let excludeExchange = ['PARASWAPPOOL', 'AAVE', 'CHAI', 'MAKERDAO', 'BZX', 'COMPOUND'];
       let bestRoute_2 = [];
-      for(let i=0; i < priceRouteOrError.bestRoute.length; i++){
+      for (let i = 0; i < priceRouteOrError.bestRoute.length; i++) {
         let checkExchange = priceRouteOrError.bestRoute[i];
         let exchange = checkExchange.exchange.toUpperCase();
         var checkExcludeExchange = excludeExchange.includes(exchange, 0);
-        if(checkExcludeExchange){
-            //data.tokens.splice(i, 1);
-        }else{
+        if (checkExcludeExchange) {
+          //data.tokens.splice(i, 1);
+        } else {
           bestRoute_2.push(checkExchange);
         }
       }
@@ -354,7 +354,7 @@ export default class Swapper extends React.Component<any, IState> {
         {
           error ? (
             <Message negative icon>
-              
+
               <Message.Content>
                 <Message.Content>{error}</Message.Content>
               </Message.Content>
@@ -413,15 +413,15 @@ export default class Swapper extends React.Component<any, IState> {
           </div>
           <div className={"right-content"}>
             <Form.Field>
-            <label>
-              From
-              <Input
-                autoFocus={true}
-                onChange={(e: any) => this.setSrcAmount(e.target.value)}
-                value={srcAmount.toString()}
-                placeholder='Amount'
-              />
-            </label>
+              <label>
+                From
+                <Input
+                  autoFocus={true}
+                  onChange={(e: any) => this.setSrcAmount(e.target.value)}
+                  value={srcAmount.toString()}
+                  placeholder='Amount'
+                />
+              </label>
             </Form.Field>
 
             <Form.Field>
@@ -438,7 +438,7 @@ export default class Swapper extends React.Component<any, IState> {
 
             <Form.Field>
               <Dropdown
-                style={{top: 50, right: 0, width: 50, zIndex: 3, }}
+                style={{top: 50, right: 0, width: 50, zIndex: 3,}}
                 placeholder='To'
                 search
                 selection
@@ -449,58 +449,58 @@ export default class Swapper extends React.Component<any, IState> {
             </Form.Field>
 
             <Form.Field>
-            <label>
-              To
-              <Input
-                value={this.getDestAmount()}
-                placeholder='Amount'
-              />
+              <label>
+                To
+                <Input
+                  value={this.getDestAmount()}
+                  placeholder='Amount'
+                />
               </label>
             </Form.Field>
             <Form.Field>
               <label>
                 Pay To (Optional)
-              <Input
-                className={'pay-to'}
-                onChange={this.onPayToChanged}
-                value={payTo}
-                placeholder='Enter Address'
-              />
+                <Input
+                  className={'pay-to'}
+                  onChange={this.onPayToChanged}
+                  value={payTo}
+                  placeholder='Enter Address'
+                />
               </label>
             </Form.Field>
             <div>
             </div>
             <div className={"button-wrapper"}>
-            <Form.Field>
-              <Button
-                loading={loading}
-                onClick={() => this.getBestPrice(srcAmount)} primary fluid>
-                GET RATES
-              </Button>
-            </Form.Field>
+              <Form.Field>
+                <Button
+                  loading={loading}
+                  onClick={() => this.getBestPrice(srcAmount)} primary fluid>
+                  GET RATES
+                </Button>
+              </Form.Field>
 
-            <Form.Field>
-              {
-                (tokenFrom && priceRoute && this.needsAllowance()) ? (
-                  <Button
-                    positive
-                    disabled={loading || !priceRoute}
-                    onClick={() => this.setAllowance()} primary fluid>
-                    APPROVE TOKEN
-                  </Button>
-                ) : (
-                  <Button
-                    positive
-                    disabled={loading || !priceRoute}
-                    onClick={() => this.swapOrPay()} primary fluid>
-                    {
-                      payTo ? 'PAY' : 'SWAP'
-                    }
-                  </Button>
-                )
-              }
+              <Form.Field>
+                {
+                  (tokenFrom && priceRoute && this.needsAllowance()) ? (
+                    <Button
+                      positive
+                      disabled={loading || !priceRoute}
+                      onClick={() => this.setAllowance()} primary fluid>
+                      APPROVE TOKEN
+                    </Button>
+                  ) : (
+                    <Button
+                      positive
+                      disabled={loading || !priceRoute}
+                      onClick={() => this.swapOrPay()} primary fluid>
+                      {
+                        payTo ? 'PAY' : 'SWAP'
+                      }
+                    </Button>
+                  )
+                }
 
-            </Form.Field>
+              </Form.Field>
             </div>
           </div>
         </Form>
