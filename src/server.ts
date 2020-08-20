@@ -5,10 +5,10 @@ import * as https from 'https';
 import webpackDevMiddleware = require("webpack-dev-middleware");
 import webpack = require('webpack');
 
-const {PORT, NODE_ENV, HTTPS} = process.env;
+const {PORT, NODE_ENV} = process.env;
 
 const port = PORT || 5555;
-const isHttps = HTTPS || false;
+const isHttps = NODE_ENV.startsWith("prod");
 
 class WebServer {
   _httpServer?: http.Server;
@@ -19,7 +19,7 @@ class WebServer {
     const app = express();
     this._httpServer = new http.Server(app);
     console.log("https: " + isHttps);
-    if (isHttps){
+    if (isHttps) {
       this._httpsServer = https.createServer({
         key: fs.readFileSync('/home/swap/swap.key'),
         cert: fs.readFileSync('/home/swap/swap.cert')
