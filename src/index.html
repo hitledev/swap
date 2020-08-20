@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="icon" href="http://188.166.188.185/mgx_logo.png" sizes="100x115" />
+  <title>MargiX Swap</title>
+  <style>
+    .content-wrapper{
+      background: -webkit-linear-gradient(to bottom, #feffff, #c3dbef);
+      background: linear-gradient(to bottom, #feffff, #c3dbef);
+      max-width: 500px;
+      margin: 0px auto;
+      border-radius: 35px;
+      padding-top: 10px;
+    }
+    .text-version{
+      color: white;
+      padding-top: 10px;
+    }
+    .nav-link.disabled{
+      font-size: 15px;
+    }
+    .title{
+      color: #1F618D;
+      font-size: 22px;
+      font-weight: bolder;
+    }
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+      background: none;
+      color: #1F618D;
+    }
+    #root{
+      background: inherit;
+    }
+    .bd-btm{
+      border-bottom: 1px solid #57A4D6;
+    }
+    @media screen and (max-width: 576px){
+      .content-wrapper{
+        width: 94%;
+      }
+    }
+  </style>
+</head>
+<body style="max-height: 100%!important;">
+  <div style="padding-top: 7vh; text-align: center;">
+    <img src="http://margix.org/logo-swap.png" alt="logo" style="width: 250px;">
+  </div>
+  <div class="containner">
+    <div class="row">
+      <div class="col">
+        <p class="text-center text-version">Beta Version</p>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-6 offset-md-3 content-wrapper">
+        <ul class="nav nav-pills nav-justified pb-3 bd-btm" id="pills-tab" role="tablist">
+          <li class="nav-item" style="border-right: 1px solid #57A4D6;">
+            <a class="nav-link active title" id="pills-swap-tab" data-toggle="pill" href="#pills-swap" role="tab" aria-controls="pills-swap" aria-selected="true">Swap</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" id="pills-pool-tab" data-toggle="pill" href="#pills-pool" role="tab" aria-controls="pills-pool" aria-selected="false"><span class="title">Pool </span> (Coming Soon)</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-swap" role="tabpanel" aria-labelledby="pills-swap-tab">
+            <div id="root" style="height: auto;"></div>
+          </div>
+          <div class="tab-pane fade" id="pills-pool" role="tabpanel" aria-labelledby="pills-pool-tab">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,156 @@
+$app-bg-color: #000;
+$font-family: 'Lato', 'Helvetica Neue', 'Arial', 'Helvetica', 'sans-serif';
+
+body {
+  font-family: $font-family;
+  // background-color: $app-bg-color;
+  position: initial !important;
+  background: -webkit-linear-gradient(to bottom, #122934, #0d1214);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #122934, #0d1214); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.button-wrapper{
+  display: flex;
+  position: absolute;
+  left: 30%;
+  top: 105%;
+}
+@media only screen and (max-width: 576px){
+  .button-wrapper{
+    left: 70px;
+  }
+}
+.ui.icon.message,.ui.info.message{
+  border-radius: 30px;
+}
+.hide {
+  display: none !important;
+}
+.right-content{
+  width: 50%;
+  margin-left: 10px;
+}
+.left-content{
+  width: 50%;
+  margin-top: 5%;
+}
+.ui {
+  .primary.button {
+    background: #ea3c27;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ea3c27, #f17f21);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ea3c27, #f17f21); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 110px;
+    display: inline-block;
+    &:hover, &:active, &:focus, &:visited {
+      background: #f17f21;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to bottom, #ea3c27, #f17f21);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to bottom, #ea3c27, #f17f21); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  }
+
+  .positive.button {
+    background: #1f65a6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #31b3cd, #1f65a6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #31b3cd, #1f65a6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 110px;
+    display: inline-block;
+    &:hover, &:active, &:focus, &:visited {
+      background: #1f65a6;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to bottom, #31b3cd, #1f65a6);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to bottom, #31b3cd, #1f65a6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+    }
+  }
+  &.form .field {
+    > .selection.dropdown {
+      height: 51px;
+      min-width: 5em!important;
+      line-height: normal;
+      background-color: none!important;
+      position: absolute;
+    }
+  }
+  .ui.search.dropdown>input.search{
+    top: 5px;
+  }
+  .ui.selection.dropdown{
+    background: none!important;
+    border: none!important;
+    width: 60px;
+  }
+  .button {
+    letter-spacing: 1px;
+    font-weight: 200;
+    font-size: 12px;
+    border-radius: 30px;
+  }
+  .title{
+    text-align: center;
+  }
+  &.form .field input, .button, .dropdown > .text {
+    font-size: 12px;
+  }
+
+  &.form .field .ui.input input {
+    box-shadow: none;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 200px;
+    border-bottom: 1px solid #DFDFDF;
+    letter-spacing: 1px;
+  }
+
+  &.image {
+    margin-bottom: 10px;
+  }
+}
+
+#root {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  > .root-container {
+
+    > .app {
+      padding: 15px;
+      height: 100%;
+      margin: 10px auto;
+      max-width: 500px;
+      margin-top: 30px;
+      padding-bottom: 60px;
+      form {
+        margin: auto;
+        display: flex;
+      }
+      label{
+        color: #A0A0A0;
+        font-style: italic;
+      }
+      table {
+        text-align: center;
+      }
+
+      .checkbox {
+        margin-right: 10px;
+      }
+
+      .pay-to {
+        input {
+          margin-top: 8px;
+          font-size: 13px;
+          padding: 10px 5px;
+          text-align: center;
+          border: none!important;
+          background-color: #8ea8bc!important;
+          border-radius: 10px!important;
+          font-style: italic;
+        }
+      }
+
+      .distribution-chart {
+        background-color: none;
+      }
+    }
+  }
+}
